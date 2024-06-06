@@ -73,46 +73,68 @@ footer {
  }
  .modal-content {
     display: flex;
-    background-color: #fefefe;
+    flex-wrap: wrap;
+    align-content: space-around;
+    flex-direction: column;
+    background-color: #625d5d;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #ff0000;
     width: 80%; /* Could be more or less, depending on screen size */
  }
 
  .modalHeader {
     display: flex;
+    flex-wrap: unwrap;
+    flex-direction: row;
+    border: 5px solid #ed0000;
  }
 
  .playlistInfo {
     display: flex;
-    border: 1px solid #888;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 5px solid #ed0000;
  }
 
  .playlistSongs {
     display: flex;
-    border: 1px solid #888;
+    flex-direction: column;
+    flex-wrap: unwrap;
+    border: 5px solid #ff0202;
  }
 
- #song1 {
+ .songImage{
+    width: 15%;
+    height: auto;
+ }
+
+ .songInformation{
     display: flex;
-    border: 1px solid #888;
-
+    flex-direction: column;
  }
 
+ .song {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid #ff0000;
+ }
  #song2 {
     display: flex;
-    border: 1px solid #888;
-
+    flex-direction: row;
+    border: 5px solid #ff0000;
  }
 
  #song3 {
     display: flex;
-    border: 1px solid #888;
+    flex-direction: row;
+    border: 5px solid #ff0000;
  }
 
  #playlistImage {
-    border: 1px solid #888;
+    border: 5px solid #fb0000;
+    width: 20%;
+    height: auto;
  }
 
  .close {
