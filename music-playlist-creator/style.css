@@ -6,25 +6,43 @@ body {
     background-color: #ffffff;
 }
 
+.playlistCover {
+    width: 100%;
+    height: auto;
+
+}
+
 .playlistCards {
     display: flex;
+    flex-wrap: wrap;
     border: 2px dotted rgb(0, 0, 0);
     align-content: space-around;
-    
+
 }
 
 .row1 {
     display: flex;
+    flex-wrap: unwrap;
     border: 2px dotted rgb(0, 0, 0);
   }
 
   .row2 {
     display: flex;
+    flex-wrap: unwrap;
     border: 2px dotted rgb(0, 0, 0);
   }
 
   .card {
     margin: 10px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     border: 2px dotted rgb(0, 0, 0);
   }
+
+  .heartImage {
+    width: 5%;
+    height: auto;
+  }
+
+ 
