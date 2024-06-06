@@ -20,26 +20,25 @@
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
-
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist2">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist3">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist4">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
             </div>
             <!--Row 2-->
@@ -48,32 +47,56 @@
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist6">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist7">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
                 </div>
                 <div class="card" id="playlist8">
                     <img src="assets/img/playlist.png" class="playlistCover">
                     <h2>Playlist Title</h2>
                     <p>Creator's Name</p>
-                    <p><img src="assets/img/favicon.ico" class="heartImage">5</p>
+                    <div class="like"><p><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
+
                 </div>
             </div>
             </div>
     </main>
+    <!-- Modal Structure -->
+    <div id="playlistModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modalHeader">
+                <img id="playlistImage" src="assets/img/playlist.png">
+                <div class="playlistInfo">
+                    <h1 id="playlistTitle"></h1>
+                    <h2 id="creatorName"></h2>
+                </div>
+            </div>
+            <div class="playlistSongs">
+                <div id="song1">
 
+                </div>
+                <div id="song2">
+
+                </div>
+                <div id="song3">
+
+                </div>
+            </div>
+        </div>
+ </div>
     <footer>
-        <!-- Your footer content here -->
+        <div id="footnote">&#x200B;</div>
     </footer>
     <script src="data/data.js"></script>
     <script src="script.js"></script>
