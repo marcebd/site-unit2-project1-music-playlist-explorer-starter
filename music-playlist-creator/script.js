@@ -29,8 +29,14 @@ function likeCount(likeCount, likeCountNum) {
 /******************  HOME *******************/
 function home() {
    // Create a container to hold the dynamically generated divs
-  const playlistContainer = document.createElement("div");
+   const playlistContainer = document.createElement("div");
    for (const playlist in data.playlists) {
+      //Create a new div for each playlist
+      const playlistDiv = document.createElement("div");
+
+      // Set the class for the new div
+      playlistDiv.className = "playlist";
+
       //Populate playlist cover img
       var playListCoverImg = document.getElementById("playlistCoverImg");
       var img = data.playlists[playlist].playlist_art;
@@ -49,7 +55,12 @@ function home() {
       //Populate like-count
       var likeCount = document.getElementById("likeCount");
       var likeCountNum = data.playlists[playlist].likeCount;
+
+      //Append Child
+      playlistContainer.appendChild(playlistDiv);
    }
+   // Append the container to the body
+   document.body.appendChild(playlistContainer);
 }
 /******************* MODAL *******************/
 function modal() {
