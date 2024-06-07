@@ -6,40 +6,28 @@ body {
     background-color: #ffffff;
 }
 
+/* Cards */
+.playlistCards {
+   display: flex;
+   flex-wrap: wrap;
+   border: 2px dotted rgb(0, 0, 0);
+   align-content: space-around;
+
+}
+
+.card {
+   margin: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   border: 2px dotted rgb(0, 0, 0);
+ }
+
 .playlistCover {
     width: 100%;
     height: auto;
 
 }
-
-.playlistCards {
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px dotted rgb(0, 0, 0);
-    align-content: space-around;
-
-}
-
-.row1 {
-    display: flex;
-    flex-wrap: unwrap;
-    border: 2px dotted rgb(0, 0, 0);
-  }
-
-  .row2 {
-    display: flex;
-    flex-wrap: unwrap;
-    border: 2px dotted rgb(0, 0, 0);
-  }
-
-  .card {
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border: 2px dotted rgb(0, 0, 0);
-  }
-
   .heartImage {
     width: 10%;
     height: auto;
@@ -50,6 +38,7 @@ body {
     display: flex;
     align-items: center;
   }
+  /* END Card */
 
 footer {
     display: inline-block;
@@ -116,17 +105,6 @@ footer {
  }
 
  .song {
-    display: flex;
-    flex-direction: row;
-    border: 5px solid #ff0000;
- }
- #song2 {
-    display: flex;
-    flex-direction: row;
-    border: 5px solid #ff0000;
- }
-
- #song3 {
     display: flex;
     flex-direction: row;
     border: 5px solid #ff0000;
