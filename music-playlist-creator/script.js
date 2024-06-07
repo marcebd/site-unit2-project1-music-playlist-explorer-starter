@@ -98,6 +98,16 @@ function popSongDuration(playlist, song) {
    songDurationDiv.innerText = $(duration).text();
 }
 
+//Get Playlist by ID
+function getPlaylistById(playlistId) {
+   for (const playlist of data.playlists) {
+     if (playlist.playlistID === parseInt(playlistId)) {
+       return playlist;
+     }
+   }
+   return null; // Return null if no matching playlist is found
+ }
+
 /******************  HOME *******************/
 function home() {
    // Create a container to hold the dynamically generated divs
@@ -142,10 +152,9 @@ function modalHeader(playlist){
    popPlaylistCreator(playlist);
 }
 
-function playlistSongs() {
+function playlistSongs(playlist) {
    // Create a container to hold the dynamically generated divs
    const songContainer = document.createElement("div");
-   for (const playlist in data.playlists) {
       for(const song in data.playlists[playlist].songs) {
          //Create a new div for each song
          const songDiv = document.createElement("div");
@@ -173,17 +182,32 @@ function playlistSongs() {
          //Append Child
          songContainer.appendChild(songDiv);
       }
-   }
    // Append the container to the body
    const targetParent = document.getElementById("playlistSongs");
    targetParent.appendChild(songContainer);
 }
 
-function modal() {
-
+function modal(playlist) {
+   //Populate Modal Header
+   modalHeader(playlist);
+   //Populate Playlist Songs
+   playlistSongs(playlist);
 }
 /******************* MAIN ********************/
 function main() {
+   //Call home() function
+   home();
 
+   // Select the parent div with class 'playlistCards'
+   const parentDiv = document.querySelector('.playlistCards');
+   
+   // Add a click event listener to the parent div
+   parentDiv.addEventListener('click', (event) => {
+         // Check if the target element has the class 'card'
+         if (event.target.classList.contains('card')) {
+            var playlist = getPlaylistById(event.target.id);
+            // Call the modal() function
+            modal(playlist);
+      }
+   });
 }
-data.playlists[0].songs[0].album
