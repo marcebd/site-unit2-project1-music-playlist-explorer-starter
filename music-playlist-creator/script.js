@@ -1,16 +1,3 @@
-/* Open on click */
-
-//Call the populate div function
-
-/* Populate song div */
-
-/* Add more song divs */
-
-/* Shuffle songs */
-
-//  .appendChild
-// Create Element
-
 //Getter functions
 function getCoverImage(playlist){
    var img = data.playlists[playlist].playlist_art;
@@ -121,6 +108,8 @@ function home() {
 
       // Set the class for the new div
       playlistDiv.className = "playlist";
+      //Set the ID for the new div
+      playlistDiv.id = data.playlists[playlist].playlistID;
 
       //Populate playlist cover img
       popPlaylistImg(playlist);
@@ -140,9 +129,17 @@ function home() {
    const targetParent = document.getElementByClass("playlistCards");
    targetParent.appendChild(playlistContainer);
 }
-/******************* MODAL *******************/
-function modalHeader(){
 
+/******************* MODAL *******************/
+function modalHeader(playlist){
+   //Populate Playlist Cover Image
+   popPlaylistImg(playlist);
+
+   //Populate Playlist Name
+   popPlaylistName(playlist);
+
+   //Populate Playlist Creator
+   popPlaylistCreator(playlist);
 }
 
 function playlistSongs() {
@@ -155,6 +152,8 @@ function playlistSongs() {
 
          // Set the class for the new div
          songDiv.className = "song";
+         //Set the ID for the new div
+         songDiv.id = data.playlists[playlist].songs[song].songID;
 
          //Populate song cover img
          popSongImg(playlist, song);
