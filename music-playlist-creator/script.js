@@ -11,28 +11,13 @@
 //  .appendChild
 // Create Element
 
-function playlistName(playListTitleDiv, name) {
-   playListTitleDiv.innerText = $(name).text();
-}
-
-function playListImg(playListImg, img) {
-   playListImg.setAttribute("src", img);
-}
-
-function playListCreator(playListCreator, creator) {
-   playListCreator.innerText = $(creator).text();
-}
-
-function likeCount(likeCount, likeCountNum) {
-   likeCount.innerText = $(likeCountNum).text();
-}
-
+//Getter functions
 function getCoverImage(playlist){
    var img = data.playlists[playlist].playlist_art;
    return img;
 }
 
-function getPlaylistName(playlist){
+function getPlaylistName(){
    var name = data.playlists[playlist].playlist_name;
    return name;
 }
@@ -47,36 +32,83 @@ function getLikeCount(playlist){
    return likeCountNum;
 }
 
-function title(titleDiv, title) {
-   titleDiv.innerText = $(title).text();
-}
-
 function getTitle(playlist, song){
    var title = data.playlists[playlist].songs[song].album
-}
-
-function artist(artistDiv, artist) {
-   artistDiv.innerText = $(artist).text();
 }
 
 function getArtist(playlist, song){
    var artist = data.playlists[playlist].songs[song].artist;
 }
 
-function album(albumDiv, album) {
-   albumDiv.innerText = $(album).text();
-}
-
 function getAlbum(playlist, song){
    var album = data.playlists[playlist].songs[song].album;
 }
 
-function duration(durationDiv, duration) {
-   durationDiv.innerText = $(duration).text();
-}
-
 function getDuration(playlist, song){
    var duration = data.playlists[playlist].songs[song].duration;
+}
+
+//Populate playlist cover img
+function popPlaylistImg(playlist) {
+   var playListCoverImg = document.getElementByClass("playlistCover");
+   var img = getCoverImage(playlist);
+   playListImg.setAttribute("src", img);
+}
+
+//Populate playlist name
+function popPlaylistName(playlist) {
+   var playListName = document.getElementByClass("playlistName");
+   var name = getPlaylistName(playlist);
+   playListTitleDiv.innerText = $(name).text();
+}
+
+//Populate playlist creator
+function popPlaylistCreator(playlist) {
+   var playListCreator = document.getElementByClass("creatorsName");
+   var creator = getPlaylistCreator(playlist);
+   playListCreator.innerText = $(creator).text();
+}
+
+//Populate like-count
+function popLikeCount(playlist) {
+   var likeCount = document.getElementByClass("likeCount");
+   var likeCountNum = getLikeCount(playlist);
+   likeCount.innerText = $(likeCountNum).text();
+}
+
+//Populate song cover img
+function popSongImg(playlist, song) {
+   var songCoverImg = document.getElementByClass("coverArt");
+   var img = getCoverImage(playlist, song);
+   songCoverImg.setAttribute("src", img);
+}
+
+//Populate song title
+function popSongTitle(playlist, song) {
+   var songTitleDiv = document.getElementByClass("title");
+   var title = getTitle(playlist, song);
+   songTitleDiv.innerText = $(title).text();
+}
+
+//Populate song artist
+function popSongArtist(playlist, song) {
+   var songArtistDiv = document.getElementByClass("artist");
+   var artist = getArtist(playlist, song);
+   songArtistDiv.innerText = $(artist).text();
+}
+
+//Populate song album
+function popSongAlbum(playlist, song) {
+   var songAlbumDiv = document.getElementByClass("album");
+   var album = getAlbum(playlist, song);
+   songAlbumDiv.innerText = $(album).text();
+}
+
+//Populate song duration
+function popSongDuration(playlist, song) {
+   var songDurationDiv = document.getElementByClass("duration");
+   var duration = getDuration(playlist, song);
+   songDurationDiv.innerText = $(duration).text();
 }
 
 /******************  HOME *******************/
@@ -91,24 +123,16 @@ function home() {
       playlistDiv.className = "playlist";
 
       //Populate playlist cover img
-      var playListCoverImg = document.getElementByClass("playlistCover");
-      var img = getCoverImage(playlist);
-      playListImg(playListCoverImg, img);
+      popPlaylistImg(playlist);
 
       //Populate playlist name
-      var playListName = document.getElementByClass("playName");
-      var name = getPlaylistName(playlist);
-      playListName(playListName, name);
+      popPlaylistName(playlist);
 
       //Populate playlist creator
-      var playListCreator = document.getElementByClass("creatorsName");
-      var creator = getPlaylistCreator(playlist);
-      playListCreator(playListCreator, creator);
+      popPlaylistCreator(playlist);
 
       //Populate like-count
-      var likeCount = document.getElementByClass("likeCount");
-      var likeCountNum = getLikeCount(playlist);
-      likeCount(likeCount, likeCountNum);
+      popLikeCount(playlist);
       //Append Child
       playlistContainer.appendChild(playlistDiv);
    }
@@ -125,37 +149,35 @@ function playlistSongs() {
    // Create a container to hold the dynamically generated divs
    const songContainer = document.createElement("div");
    for (const playlist in data.playlists) {
-      //Create a new div for each song
-      const songDiv = document.createElement("div");
+      for(const song in data.playlists[playlist].songs) {
+         //Create a new div for each song
+         const songDiv = document.createElement("div");
 
-      // Set the class for the new div
-      songDiv.className = "song";
+         // Set the class for the new div
+         songDiv.className = "song";
 
-      //Populate song cover img
-      var songCoverImg = document.getElementById("coverArt");
-      var img = data.playlists[playlist].playlist_art;
-      playListImg(playListCoverImg, img);
+         //Populate song cover img
+         popSongImg(playlist, song);
 
-      //Populate song name
-      var songName = document.getElementById("playName");
-      var title = data.playlists[playlist].playlist_name;
-      playListName(playListName, name);
+         //Populate song title
+         popSongTitle(playlist, song);
 
-      //Populate playlist creator
-      var playListCreator = document.getElementById("creatorsName");
-      var creator = data.playlists[playlist].playlist_creator;
-      playListCreator(playListCreator, creator);
+         //Populate playlist artist
+         popSongArtist(playlist, song);
 
-      //Populate like-count
-      var likeCount = document.getElementById("likeCount");
-      var likeCountNum = data.playlists[playlist].likeCount;
+         //Populate song album
+         popSongAlbum(playlist, song);
 
-      //Append Child
-      playlistContainer.appendChild(playlistDiv);
+         //Populate song duration
+         popSongDuration(playlist, song);
+
+         //Append Child
+         songContainer.appendChild(songDiv);
+      }
    }
    // Append the container to the body
-   const targetParent = document.getElementById("playlistCards");
-   targetParent.appendChild(playlistContainer);
+   const targetParent = document.getElementById("playlistSongs");
+   targetParent.appendChild(songContainer);
 }
 
 function modal() {
