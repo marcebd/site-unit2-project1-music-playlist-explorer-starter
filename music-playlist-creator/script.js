@@ -11,7 +11,6 @@
 //  .appendChild
 // Create Element
 
-/******************  HOME *******************/
 function playlistName(playListTitleDiv, name) {
    playListTitleDiv.innerText = $(name).text();
 }
@@ -48,7 +47,39 @@ function getLikeCount(playlist){
    return likeCountNum;
 }
 
+function title(titleDiv, title) {
+   titleDiv.innerText = $(title).text();
+}
 
+function getTitle(playlist, song){
+   var title = data.playlists[playlist].songs[song].album
+}
+
+function artist(artistDiv, artist) {
+   artistDiv.innerText = $(artist).text();
+}
+
+function getArtist(playlist, song){
+   var artist = data.playlists[playlist].songs[song].artist;
+}
+
+function album(albumDiv, album) {
+   albumDiv.innerText = $(album).text();
+}
+
+function getAlbum(playlist, song){
+   var album = data.playlists[playlist].songs[song].album;
+}
+
+function duration(durationDiv, duration) {
+   durationDiv.innerText = $(duration).text();
+}
+
+function getDuration(playlist, song){
+   var duration = data.playlists[playlist].songs[song].duration;
+}
+
+/******************  HOME *******************/
 function home() {
    // Create a container to hold the dynamically generated divs
    const playlistContainer = document.createElement("div");
@@ -60,49 +91,37 @@ function home() {
       playlistDiv.className = "playlist";
 
       //Populate playlist cover img
-      var playListCoverImg = document.getElementById("playlistCoverImg");
+      var playListCoverImg = document.getElementByClass("playlistCover");
       var img = getCoverImage(playlist);
       playListImg(playListCoverImg, img);
 
       //Populate playlist name
-      var playListName = document.getElementById("playName");
+      var playListName = document.getElementByClass("playName");
       var name = getPlaylistName(playlist);
       playListName(playListName, name);
 
       //Populate playlist creator
-      var playListCreator = document.getElementById("creatorsName");
+      var playListCreator = document.getElementByClass("creatorsName");
       var creator = getPlaylistCreator(playlist);
       playListCreator(playListCreator, creator);
 
       //Populate like-count
-      var likeCount = document.getElementById("likeCount");
+      var likeCount = document.getElementByClass("likeCount");
       var likeCountNum = getLikeCount(playlist);
       likeCount(likeCount, likeCountNum);
       //Append Child
       playlistContainer.appendChild(playlistDiv);
    }
    // Append the container to the body
-   const targetParent = document.getElementById("playlistCards");
+   const targetParent = document.getElementByClass("playlistCards");
    targetParent.appendChild(playlistContainer);
 }
 /******************* MODAL *******************/
-function title(titleDiv, title) {
-   titleDiv.innerText = $(title).text();
+function modalHeader(){
+
 }
 
-function artist(artistDiv, artist) {
-   artistDiv.innerText = $(artist).text();
-}
-
-function album(albumDiv, album) {
-   albumDiv.innerText = $(album).text();
-}
-
-function duration(durationDiv, duration) {
-   durationDiv.innerText = $(duration).text();
-}
-
-function modal() {
+function playlistSongs() {
    // Create a container to hold the dynamically generated divs
    const songContainer = document.createElement("div");
    for (const playlist in data.playlists) {
@@ -139,6 +158,9 @@ function modal() {
    targetParent.appendChild(playlistContainer);
 }
 
+function modal() {
+
+}
 /******************* MAIN ********************/
 function main() {
 
