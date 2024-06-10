@@ -89,28 +89,16 @@ function modalHeader(playlist){
 
    //Get the container to hold cover image
    const playlistCoverImg = document.getElementById("playlistCoverModal");
-   // Set the class for the new div
-   playlistCoverImg.className = "playlistCoverModal";
-   //Set the ID for the new div
-   playlistCoverImg.id = "cover" + data.playlists[playlist].playlistID;
    playlistCoverImg.src = data.playlists[playlist].playlist_art;
    headerDiv.appendChild(playlistCoverImg);
 
    //Get the container to hold playlist name
    const playlistName = document.getElementById("playlistNameModal");
-   // Set the class for the new div
-   playlistName.className = "playlistNameModal";
-   //Set the ID for the new div
-   playlistName.id = "name" + data.playlists[playlist].playlistID;
    playlistName.innerText = data.playlists[playlist].playlist_name;
    headerDiv.appendChild(playlistName);
 
    //Create a container to hold playlist creator
    const playlistCreator = document.getElementById("playlistCreatorModal");
-   // Set the class for the new div
-   playlistCreator.className = "playlistCreatorModal";
-   //Set the ID for the new div
-   playlistCreator.id = "creator" + data.playlists[playlist].playlistID;
    playlistCreator.innerText = data.playlists[playlist].playlist_creator;
    headerDiv.appendChild(playlistCreator);
 }
@@ -183,47 +171,53 @@ function createSongCard(playlist, song){
    return songDiv;
 }
 
+let modalOpen = false;
+
 function modal(playlist) {
+   // If the modal is already open, close it before opening a new one
+   if (modalOpen) {
+      document.getElementById("playlistModal").classList.remove("open");
+      document.getElementById("playlistModal").style.display = "none";
+   }
+
    //Populate Modal Header
    modalHeader(playlist);
    //Populate Playlist Songs4
    playlistSongs(playlist);
 
-   // If the modal is not open, open it
-   if (!document.getElementById("playlistModal").classList.contains("open")) {
-      document.getElementById("playlistModal").classList.add("open");
-      document.getElementById("playlistModal").style.display = "block";
-   }
+   // Open the modal
+   document.getElementById("playlistModal").classList.add("open");
+   document.getElementById("playlistModal").style.display = "block";
+
+   // Set the modalOpen flag to true
+   modalOpen = true;
 }
 
 /******************* MAIN ********************/
+// Select the parent div with class 'playlistCards'
+const parentDiv = document.querySelector('.playlistCards');
+// Add a click event listener to the parent div
+parentDiv.addEventListener('click', (event) => {
+   // Check if the target element has the class 'card'
+   if (event.target.classList.contains('card')) {
+      // Get the playlist ID from the target element's ID
+      const playlistId = event.target.id;
+      // Get the corresponding playlist object
+      var playlist = getPlaylistById(playlistId);
+      // Call the modal() function with the playlist parameter
+      modal(playlist);
+   }
+});
+
+// Close the modal when the user clicks on the close button
+const closeButton = document.getElementById('closeButton');
+closeButton.addEventListener('click', () => {
+   // Remove the "open" class and set the display style to "none"
+   document.getElementById('playlistModal').classList.remove('open');
+   document.getElementById('playlistModal').style.display = 'none';
+});
+
 function main() {
    //Call home() function
    home();
-
-   // Select the parent div with class 'playlistCards'
-   const parentDiv = document.querySelector('.playlistCards');
-
-   // Add a click event listener to the parent div
-   parentDiv.addEventListener('click', (event) => {
-      // Check if the target element has the class 'card'
-      if (event.target.classList.contains('card')) {
-         // Get the playlist ID from the target element's ID
-         const playlistId = event.target.id;
-
-         // Get the corresponding playlist object
-         var playlist = getPlaylistById(playlistId);
-
-         // Call the modal() function with the playlist parameter
-         modal(playlist);
-      }
-   });
-
-   // Close the modal when the user clicks on the close button
-   const closeButton = document.getElementById('closeButton');
-   closeButton.addEventListener('click', () => {
-      // Remove the "open" class and set the display style to "none"
-      document.getElementById('playlistModal').classList.remove('open');
-      document.getElementById('playlistModal').style.display = 'none';
-   });
 }
