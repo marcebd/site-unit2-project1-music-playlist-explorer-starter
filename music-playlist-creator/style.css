@@ -172,16 +172,19 @@ footer {
 /* CSS for Modal */
 
 .modal-overlay {
-   position: fixed;
-   top: 0;
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1001; /* Sit on top */
    left: 0;
-   width: 100%;
-   height: 100%;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-   z-index: 1001;
    opacity: 0; /* Start hidden */
    visibility: hidden; /* Start hidden */
    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+
 }
 
 .modal-overlay.open {
@@ -191,15 +194,17 @@ footer {
 
 .modal-content {
    background-color: #FFC0CB; /* Light pink background */
-   width: 80%; /* Adjust width as needed */
-   max-width: 600px; /* Maximum width */
-   max-height: 80vh; /* Limit the height of the modal content */
-   overflow-y: auto; /* Enable scrolling within the modal */
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: space-around;
+   flex-direction: column;
+   margin: 15% auto; /* 15% from the top and centered */
    padding: 20px;
+   width: 80%; /* Could be more or less, depending on screen size */
+   overflow-y: auto; /* Enable scrolling within the modal */
    border-radius: 10px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   display: flex;
-   flex-direction: column;
 }
 
 .modalHeader {
