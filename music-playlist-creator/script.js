@@ -1,5 +1,6 @@
-/*document.addEventListener('DOMContentLoaded', main);
+document.addEventListener('DOMContentLoaded', main);
 
+/************* Helper functions  *********************/
 // Get Playlist by ID
 function getPlaylistById(playlistId) {
     for (const playlist of data.playlists) {
@@ -10,6 +11,8 @@ function getPlaylistById(playlistId) {
     return null; // Return null if no matching playlist is found
 }
 
+/*************** Home Page *******************/
+//Create each playlist card
 function createPlaylistCard(index) {
     const playlist = data.playlists[index];
     const playlistCard = document.createElement("div");
@@ -58,7 +61,7 @@ function createPlaylistCard(index) {
 
     return playlistCard;
 }
-
+//Create all playlist cards for a playlist
 function home() {
     const targetParent = document.getElementById("playlistCardsContainer");
     data.playlists.forEach((playlist, index) => {
@@ -66,7 +69,8 @@ function home() {
         targetParent.appendChild(playlistCard);
     });
 }
-
+/**************** Modal **********************/
+//Pop modal header
 function modalHeader(playlistIndex) {
     const playlist = data.playlists[playlistIndex];
     const headerDiv = document.getElementById("modalHeader");
@@ -85,6 +89,7 @@ function modalHeader(playlistIndex) {
     headerDiv.appendChild(shuffleButton);
 }
 
+//Random Shuffle songs
 function shuffleArray(array) {
    for (let i = array.length - 1; i > 0; i--) {
        const j = Math.floor(Math.random() * (i + 1));
@@ -107,6 +112,7 @@ function shuffleSongs(playlistIndex) {
    });
 }
 
+//Create a song card for each song in a playlist
 function playlistSongs(playlistIndex) {
     const playlist = data.playlists[playlistIndex];
     const targetParent = document.getElementById("playlistSongs");
@@ -118,6 +124,7 @@ function playlistSongs(playlistIndex) {
     });
 }
 
+//Create a song card for a specific song in a playlist
 function createSongCard(playlistIndex, songIndex) {
    const song = data.playlists[playlistIndex].songs[songIndex];
    const songDiv = document.createElement("div");
@@ -158,6 +165,7 @@ function createSongCard(playlistIndex, songIndex) {
 
 let modalOpen = false;
 
+//Open and pop modal
 function modal(playlistIndex) {
    if (modalOpen) {
        document.getElementById("playlistModal").classList.remove("open");
@@ -173,106 +181,14 @@ function modal(playlistIndex) {
    modalOpen = true;
 }
 
-const closeButton = document.getElementById('closeButton');
-closeButton.onclick = function(event) {
+/*********************** Main Homepage **********************/
+//populatie and make the close button in modal
+function main() {
+   home();
+   const closeButton = document.getElementById('closeButton');
+   closeButton.onclick = function(event) {
    document.getElementById('playlistModal').classList.remove('open');
    document.getElementById('playlistModal').style.display = 'none';
    modalOpen = false;
 };
-
-function main() {
-   home();
-}*/
-
-document.addEventListener('DOMContentLoaded', function() {
-   const selectedPlaylist = getRandomPlaylist();
-   displayPlaylistDetails(selectedPlaylist);
-   displayPlaylistSongs(selectedPlaylist);
-   displayOtherPlaylists();
-});
-
-function getRandomPlaylist() {
-   const randomIndex = Math.floor(Math.random() * data.playlists.length);
-   return data.playlists[randomIndex];
-}
-
-function displayPlaylistDetails(playlist) {
-   const playlistImage = document.getElementById('playlistImageFeatured');
-   const playlistName = document.getElementById('playlistNameFeatured');
-   const playlistCreator = document.getElementById('playlistCreatorFeatured');
-
-   playlistImage.src = playlist.playlist_art;
-   playlistName.textContent = playlist.playlist_name;
-   playlistCreator.textContent = playlist.playlist_creator;
-}
-
-function displayPlaylistSongs(playlist) {
-   const songList = document.getElementById('songListFeatured');
-   songList.innerHTML = ''; // Clear previous songs
-
-   playlist.songs.forEach(song => {
-       const songDiv = document.createElement('div');
-       songDiv.className = 'song-item';
-
-       const songCoverImg = document.createElement('img');
-       songCoverImg.src = song.cover_art;
-       songCoverImg.alt = 'Cover Art';
-       songCoverImg.className = 'song-cover';
-
-       const songDetailsDiv = document.createElement('div');
-       songDetailsDiv.className = 'song-details';
-
-       const songTitle = document.createElement('div');
-       songTitle.className = 'song-title';
-       songTitle.textContent = song.title;
-
-       const songArtist = document.createElement('div');
-       songArtist.className = 'song-artist';
-       songArtist.textContent = song.artist;
-
-       const songDuration = document.createElement('div');
-       songDuration.className = 'song-duration';
-       songDuration.textContent = song.duration;
-
-       songDetailsDiv.appendChild(songTitle);
-       songDetailsDiv.appendChild(songArtist);
-       songDetailsDiv.appendChild(songDuration);
-
-       songDiv.appendChild(songCoverImg);
-       songDiv.appendChild(songDetailsDiv);
-
-       songList.appendChild(songDiv);
-   });
-}
-
-function displayOtherPlaylists() {
-   const otherPlaylistsDiv = document.getElementById('otherPlaylists');
-   otherPlaylistsDiv.innerHTML = ''; // Clear previous playlists
-
-   let playlists = [];
-   while (playlists.length < 3) {
-       let randomPlaylist = getRandomPlaylist();
-       if (!playlists.includes(randomPlaylist)) {
-           playlists.push(randomPlaylist);
-       }
-   }
-
-   playlists.forEach(playlist => {
-       const playlistDiv = document.createElement('div');
-       playlistDiv.className = 'playlist-item';
-
-       const playlistCoverImg = document.createElement('img');
-       playlistCoverImg.src = playlist.playlist_art;
-       playlistCoverImg.alt = 'Playlist Cover';
-       playlistCoverImg.className = 'playlist-cover';
-
-       const playlistName = document.createElement('div');
-       playlistName.className = 'playlist-name';
-       playlistName.textContent = playlist.playlist_name;
-
-       playlistDiv.appendChild(playlistCoverImg);
-       playlistDiv.appendChild(playlistName);
-
-       otherPlaylistsDiv.appendChild(playlistDiv);
-   });
 }
