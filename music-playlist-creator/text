@@ -1,0 +1,244 @@
+document.addEventListener('DOMContentLoaded', main);
+
+
+
+ /******************* MODAL *******************/
+ function modalHeader(playlist){
+   //Create container for whole header
+   const modalHeaderContainer = document.createElement("div");
+   // Set the class for the new div
+   modalHeaderContainer.className = "modalHeader";
+   //Set the ID for the new div
+   modalHeaderContainer.id = "modalHeader" + data.playlists[playlist].playlistID;
+
+   //Create a container to hold title
+   const playlistTitle = document.createElement("div");
+   // Set the class for the new div
+   playlistTitle.className = "playlistTitle";
+   //Set the ID for the new div
+   playlistTitle.id = "playlistTitle" + data.playlists[playlist].playlistID;
+   playlistTitle.innerText = data.playlists[playlist].playlist_name;
+   modalHeaderContainer.appendChild(playlistTitle);
+
+
+   //Create a container to hold song title
+   const creator = document.createElement("div");
+   // Set the class for the new div
+   creator.className = "creator";
+   //Set the ID for the new div
+   creator.id = "creator" + data.playlists[playlist].playlistID;
+   creator.innerText = data.playlists[playlist].playlist_creator;
+   modalHeaderContainer.appendChild(creator);
+
+   return modalHeaderContainer;
+}
+
+ function modal(playlist) {
+   //Populate Modal Header
+   const targetParent = document.querySelector(".header");
+   let header = modalHeader(playlist);
+   targetParent.appendChild(header);
+
+   //Populate Playlist Songs4
+   playlistSongs(playlist);
+}
+
+
+
+function playlistSongs(playlist) {
+   // Create a container to hold the dynamically generated divs
+   const songContainer = document.getElementById("playlistSongs");
+      for(const song in data.playlists[playlist].songs) {
+         //Create song card
+         let songCard = createSongCard(playlist, song);
+
+         // Append the container to the body
+         songContainer.appendChild(songCard);
+      }
+}
+
+function createSongCard(playlist, song){
+   //Create a new div for each song
+   const songDiv = document.createElement("div");
+   // Set the class for the new div
+   songDiv.className = "song";
+   //Set the ID for the new div
+   songDiv.id = data.playlists[playlist].songs[song].songID;
+
+   //Create a container to hold cover image
+   const songCoverImg = document.createElement("img");
+   // Set the class for the new div
+   songCoverImg.className = "songCover";
+   //Set the ID for the new div
+   songCoverImg.id = "songCover" + data.playlists[playlist].songs[song].songID;
+   songCoverImg.src = data.playlists[playlist].songs[song].cover_art;
+   songDiv.appendChild(songCoverImg);
+
+   //Create a container to hold song title
+   const songTitle = document.createElement("div");
+   // Set the class for the new div
+   songTitle.className = "songTitle";
+   //Set the ID for the new div
+   songTitle.id = "songTitle" + data.playlists[playlist].songs[song].songID;
+   songTitle.innerText = data.playlists[playlist].songs[song].title;
+   songDiv.appendChild(songTitle);
+
+   //Create a container to hold song artist
+   const songArtist = document.createElement("div");
+   // Set the class for the new div
+   songArtist.className = "songArtist";
+   //Set the ID for the new div
+   songArtist.id = "songArtist" + data.playlists[playlist].songs[song].songID;
+   songArtist.innerText = data.playlists[playlist].songs[song].artist;
+   songDiv.appendChild(songArtist);
+
+   //Create a container to hold song album
+   const songAlbum = document.createElement("div");
+   // Set the class for the new div
+   songAlbum.className = "songAlbum";
+   //Set the ID for the new div
+   songAlbum.id = "songAlbum" + data.playlists[playlist].songs[song].songID;
+   songAlbum.innerText = data.playlists[playlist].songs[song].album;
+   songDiv.appendChild(songAlbum);
+
+   //Create a container to hold song duration
+   const songDuration = document.createElement("div");
+   // Set the class for the new div
+   songDuration.className = "songDuration";
+   //Set the ID for the new div
+   songDuration.id = "songDuration" + data.playlists[playlist].songs[song].songID;
+   songDuration.innerText = data.playlists[playlist].songs[song].duration;
+   songDiv.appendChild(songDuration);
+   return songDiv;
+}
+
+ /******** Create Playlist Card  *******/
+ function createPlaylistCard(playlist) {
+   // Create a container to hold the dynamically generated divs (card)
+   const playlistCard = document.createElement("div");
+   // Set the class for the new div
+   playlistCard.className = "card";
+   //Set the ID for the new div
+   playlistCard.id = data.playlists[playlist].playlistID;
+
+   //Create a container to hold cover image
+   const playlistCoverImg = document.createElement("img");
+   // Set the class for the new div
+   playlistCoverImg.className = "playlistCover";
+   //Set the ID for the new div
+   playlistCoverImg.id = "cover" + data.playlists[playlist].playlistID;
+   playlistCoverImg.src = data.playlists[playlist].playlist_art;
+   playlistCard.appendChild(playlistCoverImg);
+
+   //Create a container to hold playlist name
+   const playlistName = document.createElement("div");
+   // Set the class for the new div
+   playlistName.className = "playlistName";
+   //Set the ID for the new div
+   playlistName.id = "name" + data.playlists[playlist].playlistID;
+   playlistName.innerText = data.playlists[playlist].playlist_name;
+   playlistCard.appendChild(playlistName);
+
+   //Create a container to hold playlist creator
+   const playlistCreator = document.createElement("div");
+   // Set the class for the new div
+   playlistCreator.className = "playlistName";
+   //Set the ID for the new div
+   playlistCreator.id = "creator" + data.playlists[playlist].playlistID;
+   playlistCreator.innerText = data.playlists[playlist].playlist_creator;
+   playlistCard.appendChild(playlistCreator);
+
+   //Create a container to hold like-count
+   const likeCountImage = document.createElement("img");
+   // Set the class for the new div
+   likeCountImage.className = "likeCountImage";
+   //Set the ID for the new div
+   likeCountImage.id = "countImage" + data.playlists[playlist].playlistID;
+   likeCountImage.src = "assets/img/favicon.ico";
+   likeCountImage.className = "heartImage";
+   playlistCard.appendChild(likeCountImage);
+
+   const likeCount = document.createElement("div");
+   // Set the class for the new div
+   likeCount.className = "likeCount";
+   //Set the ID for the new div
+   likeCount.id = "likeCount" + data.playlists[playlist].playlistID;
+   likeCount.innerText = data.playlists[playlist].likeCount;
+   console.log('Created playlist card for playlist ID:', data.playlists[playlist].playlistID);
+
+   playlistCard.appendChild(likeCount)
+   playlistCard.addEventListener("click", () => {
+      modal(playlist);
+   });
+   return playlistCard;
+ }
+
+/******************  HOME *******************/
+function home() {
+   const targetParent = document.getElementById("playlistCardsContainer");
+   for (let playlist in data.playlists) {
+      //Create playlist card
+      let playlistCard = createPlaylistCard(playlist);
+
+      // Append the container to the body
+      targetParent.appendChild(playlistCard);
+   }
+}
+
+/******************* MAIN ********************/
+function main() {
+   //Call home() function
+   home();
+
+   // Select the parent div with class 'playlistCards'
+   const parentDiv = document.querySelector('.playlistCards');
+
+   // Add a click event listener to the parent div
+   parentDiv.addEventListener('click', (event) => {
+      // Check if the target element has the class 'card'
+      if (event.target.classList.contains('card')) {
+         // Get the playlist ID from the target element's ID
+         const playlistId = event.target.id;
+         var playlist = getPlaylistById(playlistId);
+
+         // Call the modal() function
+         modal(playlist);
+      }
+   });
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Playlist Explorer</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>Music Playlist Explorer</h2>
+    </header>
+    <main>
+        <div class="playlistCards" id="playlistCardsContainer"></div>
+    </main>
+    <!-- Modal Structure -->
+    <div id="playlistModal" class="modal-overlay">
+        <div class="modal-content" id="modal-Content">
+            <span class="close">&times;</span>
+            <div class="header" id="header"></div>
+        <div id="playlistSongs" class="playlistSongs">
+            <div class ="song" ></div>
+        </div>
+    </div>
+    <footer>
+        <div id="footnote">&#x200B;</div>
+    </footer>
+    <script src="data/data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

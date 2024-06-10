@@ -13,37 +13,18 @@
         <h2>Music Playlist Explorer</h2>
     </header>
     <main>
-        <div class="playlistCards" id="playlistCardsContainer">
-            <!-- <div class="card">
-                <img src="assets/img/playlist.png" class="playlistCover" id="HplaylistCover">
-                <h2 class="playlistName" id="HplaylistName"> Playlist Title</h2>
-                <p class="playlistCreator" id="HplaylistCreator"> Creator's Name</p>
-                <div class="like"><p class="Hlike"><img src="assets/img/favicon.ico" class="heartImage">5</p></div>
-            </div> -->
-        </div>
+        <div class="playlistCards" id="playlistCardsContainer"></div>
     </main>
     <!-- Modal Structure -->
     <div id="playlistModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modalHeader">
-                <img class="playlistCover" id="MplaylistCover" src="assets/img/playlist.png">
-                <div class="playlistInfo">
-                    <h1 class="playlistName" id="MplaylistName">Playlist Title</h1>
-                    <h2 class="playlistCreator" id="MplaylistCreator">Creator's Name</h2>
-                </div>
+        <div class="modal-content" id="modal-content">
+            <span class="close" id="closeButton">&times;</span>
+            <div class="modalHeader" id="modalHeader">
+                <img class="playlistCoverModal" id="playlistCoverModal"></img>
+                <div class="playlistNameModal" id="playlistNameModal"></div>
+                <div class="playlistCreatorModal" id="playlistCreatorModal"></div>
             </div>
-            <div id="playlistSongs" class="playlistSongs">
-                <div class ="song" >
-                    <image src="assets/img/playlist.png" class="coverArt"></image>
-                    <div class="songInformation">
-                        <h3 class= "title">Song Title</h3>
-                        <h4 class="artist">Artist Name</h3>
-                        <h4 class="album">Album's Name</h5>
-                    </div>
-                    <h4 class="duration">0:00</h4>
-                </div>
-            </div>
+            <div id="playlistSongs" class="playlistSongsContainer"></div>
         </div>
     </div>
     <footer>
