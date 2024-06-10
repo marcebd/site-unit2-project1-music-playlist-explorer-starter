@@ -3,34 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Music Playlist Explorer</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Featured Playlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h2>Music Playlist Explorer</h2>
-    </header>
-    <main>
-        <div class="playlistCards" id="playlistCardsContainer"></div>
-    </main>
-    <!-- Modal Structure -->
-    <div id="playlistModal" class="modal-overlay">
-        <div class="modal-content" id="modal-content">
-            <span class="close" id="closeButton">&times;</span>
-            <div class="modalHeader" id="modalHeader">
-                <img class="playlistCoverModal" id="playlistCoverModal"></img>
-                <div class="playlistNameModal" id="playlistNameModal"></div>
-                <div class="playlistCreatorModal" id="playlistCreatorModal"></div>
-                <button class="suffleButton" id="shuffleButton">Shuffle</button>
-            </div>
-            <div id="playlistSongs" class="playlistSongsContainer"></div>
+    <div class="container">
+        <div class="playlist-info">
+            <img id="playlistImageFeatured" src="" alt="Playlist Cover">
+            <h2 id="playlistNameFeatured"></h2>
+            <p id="playlistCreatorFeatured"></p>
+        </div>
+        <div class="song-list" id="songListFeatured">
+            <!-- Songs will be dynamically inserted here -->
         </div>
     </div>
-    <footer>
-        <div id="footnote">&#x200B;</div>
-    </footer>
     <script src="data/data.js"></script>
     <script src="script.js"></script>
 </body>

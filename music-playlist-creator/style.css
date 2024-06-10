@@ -5,6 +5,27 @@ body {
     background-color: #ffffff;
 }
 
+.playlist-info {
+   flex: 1;
+   text-align: center;
+}
+.playlist-info img {
+   width: 100%;
+   max-width: 300px;
+   height: auto;
+   margin-bottom: 20px;
+}
+.song-list {
+   flex: 2;
+   margin-left: 20px;
+}
+.song-list div {
+   margin-bottom: 10px;
+   padding: 10px;
+   background-color: #f1f1f1;
+   border-radius: 5px;
+}
+
 /* Cards */
 .playlistCards {
    display: flex;

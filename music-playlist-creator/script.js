@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', main);
+/*document.addEventListener('DOMContentLoaded', main);
 
 // Get Playlist by ID
 function getPlaylistById(playlistId) {
@@ -182,4 +182,70 @@ closeButton.onclick = function(event) {
 
 function main() {
    home();
+}*/
+
+document.addEventListener('DOMContentLoaded', function() {
+   const selectedPlaylist = getRandomPlaylist();
+   displayPlaylistDetails(selectedPlaylist);
+   displayPlaylistSongs(selectedPlaylist);
+});
+
+function getRandomPlaylist() {
+   const randomIndex = Math.floor(Math.random() * data.playlists.length);
+   return data.playlists[randomIndex];
+}
+
+function displayPlaylistDetails(playlist) {
+   const playlistImage = document.getElementById('playlistImageFeatured');
+   const playlistName = document.getElementById('playlistNameFeatured');
+   const playlistCreator = document.getElementById('playlistCreatorFeatured');
+
+   playlistImage.src = playlist.playlist_art;
+   playlistName.textContent = playlist.playlist_name;
+   playlistCreator.textContent = playlist.playlist_creator;
+}
+
+function displayPlaylistSongs(playlist) {
+   const songList = document.getElementById('songListFeatured');
+   songList.innerHTML = ''; // Clear previous songs
+
+   playlist.songs.forEach(song => {
+       const songDiv = document.createElement('div');
+       songDiv.className = 'song-item'; // Added class for potential styling
+
+       // Create an image element for the song cover
+       const songCoverImg = document.createElement('img');
+       songCoverImg.src = song.cover_art;
+       songCoverImg.alt = 'Cover Art';
+       songCoverImg.className = 'song-cover'; // Added class for styling
+
+       // Create a div to hold song details
+       const songDetailsDiv = document.createElement('div');
+       songDetailsDiv.className = 'song-details'; // Added class for styling
+
+       // Create individual elements for song title, artist, and duration
+       const songTitle = document.createElement('div');
+       songTitle.className = 'song-title';
+       songTitle.textContent = song.title;
+
+       const songArtist = document.createElement('div');
+       songArtist.className = 'song-artist';
+       songArtist.textContent = song.artist;
+
+       const songDuration = document.createElement('div');
+       songDuration.className = 'song-duration';
+       songDuration.textContent = song.duration;
+
+       // Append title, artist, and duration to the details div
+       songDetailsDiv.appendChild(songTitle);
+       songDetailsDiv.appendChild(songArtist);
+       songDetailsDiv.appendChild(songDuration);
+
+       // Append the cover image and details to the songDiv
+       songDiv.appendChild(songCoverImg);
+       songDiv.appendChild(songDetailsDiv);
+
+       // Append the songDiv to the song list
+       songList.appendChild(songDiv);
+   });
 }
