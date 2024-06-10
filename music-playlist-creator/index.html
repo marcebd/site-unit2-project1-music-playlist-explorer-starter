@@ -8,13 +8,18 @@
 </head>
 <body>
     <div class="container">
-        <div class="playlist-info">
-            <img id="playlistImageFeatured" src="" alt="Playlist Cover">
-            <h2 id="playlistNameFeatured"></h2>
-            <p id="playlistCreatorFeatured"></p>
+        <div class="left-panel">
+            <div class="playlist-info">
+                <img id="playlistImageFeatured" src="" alt="Playlist Cover">
+                <h2 id="playlistNameFeatured"></h2>
+                <p id="playlistCreatorFeatured"></p>
+            </div>
+            <div class="song-list" id="songListFeatured">
+                <!-- Songs will be dynamically inserted here -->
+            </div>
         </div>
-        <div class="song-list" id="songListFeatured">
-            <!-- Songs will be dynamically inserted here -->
+        <div class="right-panel" id="otherPlaylists">
+            <!-- Other playlists will be dynamically inserted here -->
         </div>
     </div>
     <script src="data/data.js"></script>

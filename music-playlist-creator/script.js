@@ -188,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
    const selectedPlaylist = getRandomPlaylist();
    displayPlaylistDetails(selectedPlaylist);
    displayPlaylistSongs(selectedPlaylist);
+   displayOtherPlaylists();
 });
 
 function getRandomPlaylist() {
@@ -211,19 +212,16 @@ function displayPlaylistSongs(playlist) {
 
    playlist.songs.forEach(song => {
        const songDiv = document.createElement('div');
-       songDiv.className = 'song-item'; // Added class for potential styling
+       songDiv.className = 'song-item';
 
-       // Create an image element for the song cover
        const songCoverImg = document.createElement('img');
        songCoverImg.src = song.cover_art;
        songCoverImg.alt = 'Cover Art';
-       songCoverImg.className = 'song-cover'; // Added class for styling
+       songCoverImg.className = 'song-cover';
 
-       // Create a div to hold song details
        const songDetailsDiv = document.createElement('div');
-       songDetailsDiv.className = 'song-details'; // Added class for styling
+       songDetailsDiv.className = 'song-details';
 
-       // Create individual elements for song title, artist, and duration
        const songTitle = document.createElement('div');
        songTitle.className = 'song-title';
        songTitle.textContent = song.title;
@@ -236,16 +234,45 @@ function displayPlaylistSongs(playlist) {
        songDuration.className = 'song-duration';
        songDuration.textContent = song.duration;
 
-       // Append title, artist, and duration to the details div
        songDetailsDiv.appendChild(songTitle);
        songDetailsDiv.appendChild(songArtist);
        songDetailsDiv.appendChild(songDuration);
 
-       // Append the cover image and details to the songDiv
        songDiv.appendChild(songCoverImg);
        songDiv.appendChild(songDetailsDiv);
 
-       // Append the songDiv to the song list
        songList.appendChild(songDiv);
+   });
+}
+
+function displayOtherPlaylists() {
+   const otherPlaylistsDiv = document.getElementById('otherPlaylists');
+   otherPlaylistsDiv.innerHTML = ''; // Clear previous playlists
+
+   let playlists = [];
+   while (playlists.length < 3) {
+       let randomPlaylist = getRandomPlaylist();
+       if (!playlists.includes(randomPlaylist)) {
+           playlists.push(randomPlaylist);
+       }
+   }
+
+   playlists.forEach(playlist => {
+       const playlistDiv = document.createElement('div');
+       playlistDiv.className = 'playlist-item';
+
+       const playlistCoverImg = document.createElement('img');
+       playlistCoverImg.src = playlist.playlist_art;
+       playlistCoverImg.alt = 'Playlist Cover';
+       playlistCoverImg.className = 'playlist-cover';
+
+       const playlistName = document.createElement('div');
+       playlistName.className = 'playlist-name';
+       playlistName.textContent = playlist.playlist_name;
+
+       playlistDiv.appendChild(playlistCoverImg);
+       playlistDiv.appendChild(playlistName);
+
+       otherPlaylistsDiv.appendChild(playlistDiv);
    });
 }
