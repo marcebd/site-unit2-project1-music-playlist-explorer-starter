@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+<head >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button onclick="window.location.href='index.html'" class="navigate-button" id="navigateButton">Featured</button>
-    <header>
-        <h2>Music Playlist Explorer</h2>
+    <header class="header">
+        <button onclick="window.location.href='index.html'" class="navigate-button" id="navigateButton">Featured</button>
+        <h2 class="title">Music Playlist Explorer</h2>
     </header>
     <main>
         <div class="playlistCards" id="playlistCardsContainer"></div>
@@ -35,4 +36,5 @@
     <script src="data/data.js"></script>
     <script src="script.js"></script>
 </body>
+style="background: linear-gradient(181deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 48%, rgba(0,212,255,1) 100%)"
 </html>

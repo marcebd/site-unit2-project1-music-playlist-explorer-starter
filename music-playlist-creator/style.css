@@ -1,20 +1,156 @@
-body {
-    font-family: 'Arial', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    height: 100%;
+    font-family: Arial, sans-serif; /* Default font for the body */
 }
 
-.playlist-info {
-   flex: 1;
-   text-align: center;
+.header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    width: 100%; /* Full width */
+    display: flex; /* Use flexbox to layout children */
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center; /* Center items horizontally */
+    background-color: #FAD2B2; /* Light pastel orange */
+    padding: 60px; /* Increased from 20px */
+    box-shadow: 20px 20px 60px rgba(255, 182, 193, 0.6);
+    transition: box-shadow 0.3s ease-in-out;
+    color: white;
+    font-family: 'Bubblegum Sans', cursive;
+    z-index: 1000; /* Ensure it stays on top */
 }
-.playlist-info img {
-   width: 100%;
-   max-width: 300px;
-   height: auto;
-   margin-bottom: 20px;
+
+.header:hover {
+    box-shadow:  150px 150px 300px rgba(255, 182, 193, 0.6); /* Increased shadow size */
 }
+
+.navigate-button {
+    background-color: rgb(224, 177, 184);
+    border: none;
+    color: white;
+    font-size: 48px; /* Increased from 16px */
+    cursor: pointer;
+    font-family: 'Bubblegum Sans', cursive;
+    transition: box-shadow 0.3s ease-in-out;
+    padding: 15px 30px; /* Added padding and increased size */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased default shadow */
+}
+
+.navigate-button:hover {
+    box-shadow: 0 24px 30px rgba(0, 0, 0, 0.3); /* Increased shadow size on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.title {
+    background-color: rgb(224, 177, 184);
+    margin: 20px 0; /* Added vertical margin */
+    font-size: 72px; /* Increased from 24px */
+    text-align: center; /* Center the text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Added shadow to the title */
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.playlistCards  {
+      padding-top: 300px; /* Increased space for the fixed header */
+      display: flex;
+      flex-direction: column; /* Ensures cards are stacked vertically */
+      align-items: center; /* Center cards horizontally */
+      overflow-y: auto; /* Enable vertical scrolling */
+      height: 100%; /* Full height to enable scrolling */
+      padding-bottom: 20px; /* Padding at the bottom */
+      width: 100%; /* Ensure the container takes full width */
+  }
+  .card {
+      background-color: #FFC0CB; /* Light pink background */
+      border-radius: 10px; /* Rounded edges */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+      margin: 10px; /* Space between cards */
+      padding: 15px; /* Padding inside the card */
+      width: 50%; /* Card width is now 50% of the container width */
+      max-width: 600px; /* Maximum width to avoid overly wide cards on larger screens */
+  }
+
+@media (max-width: 768px) {
+   .card {
+       width: 80%; /* Slightly wider cards on smaller screens */
+   }
+}
+
+.playlistCover {
+    width: 100%; /* Full width of the card */
+    border-radius: 8px; /* Rounded edges for the image */
+    border: 3px solid #FFFFFF; /* White border for a cool frame */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+}
+
+.playlistName {
+   font-size: 24px; /* Increased font size for playlist title */
+   font-weight: bold; /* Make title bold */
+   margin-top: 10px; /* Space above the text */
+}
+
+.playlistCreator {
+   font-size: 18px; /* Increased font size for creator */
+   color: #666666; /* Grey color for less emphasis */
+   margin-bottom: 20px; /* Space below the text */
+}
+
+.likeCountImage {
+   font-family: 'Font Awesome 5 Free'; /* Font Awesome for icons */
+   font-weight: 400; /* Weight for outline icons */
+   color: #000000; /* Black color for the outline heart icon */
+   cursor: pointer; /* Pointer cursor on hover */
+   font-size: 24px; /* Increased icon size */
+}
+.likeCountImage.liked {
+   color: rgb(249, 0, 0); /* Change color to red when liked */
+   font-weight: 900; /* Bold weight for filled icons */
+}
+
+.likeCount {
+   font-size: 18px; /* Increased font size for like count */
+   display: flex;
+   justify-content: flex-end; /* Align like button and count to the right */
+   align-items: center; /* Center items vertically */
+   margin-top: auto; /* Pushes container to the bottom of the card */
+}
+
+.card {
+   background-color: #FFC0CB; /* Light pink background */
+   border-radius: 10px; /* Rounded edges */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+   margin: 20px; /* Space between cards */
+   padding: 15px; /* Padding inside the card */
+   transition: transform 0.3s ease-in-out; /* Smooth transform on hover */
+}
+
+.card:hover {
+   transform: scale(1.05); /* Slightly enlarge card on hover */
+   cursor: pointer;
+}
+
+.playlistCover {
+   width: 100%; /* Full width of the card */
+   border-radius: 8px; /* Rounded edges for the image */
+   border: 3px solid #FFFFFF; /* White border for a cool frame */
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+}
+
+.playlistName {
+   font-size: 18px; /* Larger font size for playlist title */
+   font-weight: bold; /* Make title bold */
+   margin-top: 10px; /* Space above the title */
+}
+
+.playlistCreator {
+   font-size: 14px; /* Smaller font size for creator */
+   color: #666666; /* Grey color for less emphasis */
+}
+
 .song-list {
    flex: 2;
    margin-left: 20px;
@@ -26,40 +162,6 @@ body {
    border-radius: 5px;
 }
 
-/* Cards */
-.playlistCards {
-   display: flex;
-   flex-wrap: wrap;
-   border: 2px dotted rgb(0, 0, 0);
-   align-content: space-around;
-
-}
-
-.card {
-   margin: 10px;
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: column;
-   border: 2px dotted rgb(0, 0, 0);
- }
-
-.playlistCover {
-    width: 100%;
-    height: auto;
-
-}
-  .heartImage {
-    width: 10%;
-    height: auto;
-    vertical-align: middle;
-  }
-
-  .like {
-    display: flex;
-    align-items: center;
-  }
-  /* END Card */
-
 footer {
     display: inline-block;
     width: 100%;
@@ -68,83 +170,85 @@ footer {
   }
 
 /* CSS for Modal */
+
 .modal-overlay {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(69, 29, 133, 0.4); /* Black w/ opacity */
-    border: 2px dotted rgb(0, 0, 0);
- }
- .modal-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-around;
-    flex-direction: column;
-    background-color: #625d5d;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #ff0000;
-    width: 80%; /* Could be more or less, depending on screen size */
- }
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+   z-index: 1001;
+   opacity: 0; /* Start hidden */
+   visibility: hidden; /* Start hidden */
+   transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+}
 
- .modalHeader {
-    display: flex;
-    flex-wrap: unwrap;
-    flex-direction: row;
-    border: 5px solid #ed0000;
- }
+.modal-overlay.open {
+   opacity: 1; /* Fully visible */
+   visibility: visible; /* Make visible */
+}
 
- .playlistInfo {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border: 5px solid #ed0000;
- }
+.modal-content {
+   background-color: #FFC0CB; /* Light pink background */
+   width: 80%; /* Adjust width as needed */
+   max-width: 600px; /* Maximum width */
+   max-height: 80vh; /* Limit the height of the modal content */
+   overflow-y: auto; /* Enable scrolling within the modal */
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   display: flex;
+   flex-direction: column;
+}
 
- .playlistSongs {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: unwrap;
-    border: 5px solid #ff0202;
- }
+.modalHeader {
+   position: sticky;
+   top: 0; /* Stick to the top of the modal content */
+   background-color: #FFC0CB; /* Light pink background, same as modal content */
+   z-index: 10; /* Ensure it's above the scrolled content */
+   padding: 20px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
 
- .songImage{
-    width: 15%;
-    height: auto;
- }
+.playlistSongsContainer {
+   display: flex;
+   flex-direction: column;
+   padding: 20px;
+}
 
- .songInformation{
-    display: flex;
-    flex-direction: column;
- }
+.song {
+   background-color: #FAD2B2; /* Light pastel orange */ /* White background for each song card */
+   margin: 10px 0;
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for each card */
+   display: flex;
+   align-items: center;
+   transition: transform 0.3s ease; /* Smooth transform on hover */
+}
 
- .song {
-    display: flex;
-    flex-direction: row;
-    border: 5px solid #ff0000;
- }
+.song:hover {
+   transform: scale(1.05); /* Slightly enlarge card on hover */
+}
 
- #playlistImage {
-    border: 5px solid #fb0000;
-    width: 20%;
-    height: auto;
- }
+.songCover {
+   width: 50px;
+   height: 50px;
+   border-radius: 5px;
+   margin-right: 10px;
+}
 
- .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
- }
- .close:hover,
- .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
- }
+.songInfo {
+   display: flex;
+   flex-direction: column;
+}
+
+.artistName, .albumName {
+   font-size: 16px;
+}
+
+.duration {
+   margin-left: auto;
+   font-size: 14px;
+}

@@ -12,7 +12,7 @@ function getPlaylistById(playlistId) {
 }
 
 /*************** Home Page *******************/
-//Create each playlist card
+// Create each playlist card
 function createPlaylistCard(index) {
     const playlist = data.playlists[index];
     const playlistCard = document.createElement("div");
@@ -32,15 +32,15 @@ function createPlaylistCard(index) {
     playlistCard.appendChild(playlistName);
 
     const playlistCreator = document.createElement("div");
-    playlistCreator.className = "playlistName";
+    playlistCreator.className = "playlistCreator";
     playlistCreator.id = "creator" + playlist.playlistID;
     playlistCreator.innerText = playlist.playlist_creator;
     playlistCard.appendChild(playlistCreator);
 
-    const likeCountImage = document.createElement("img");
-    likeCountImage.className = "likeCountImage";
+    // Changed from <img> to <i> for Font Awesome icon
+    const likeCountImage = document.createElement("i");
+    likeCountImage.className = "likeCountImage far fa-heart"; // Font Awesome heart icon, outline by default
     likeCountImage.id = "countImage" + playlist.playlistID;
-    likeCountImage.src = "assets/img/favicon.ico";
     playlistCard.appendChild(likeCountImage);
 
     const likeCount = document.createElement("div");
@@ -51,7 +51,15 @@ function createPlaylistCard(index) {
 
     likeCountImage.addEventListener("click", (event) => {
         event.stopPropagation();
-        playlist.likeCount = playlist.likeCount === 0 ? 1 : 0;
+        if (playlist.likeCount === 0) {
+            playlist.likeCount = 1;
+            likeCountImage.classList.remove('far'); // Remove the outline class
+            likeCountImage.classList.add('fas', 'liked'); // Add the solid class and 'liked' class
+        } else {
+            playlist.likeCount = 0;
+            likeCountImage.classList.remove('fas', 'liked'); // Remove the solid class and 'liked' class
+            likeCountImage.classList.add('far'); // Add the outline class
+        }
         likeCount.innerText = playlist.likeCount;
     });
 
@@ -61,6 +69,7 @@ function createPlaylistCard(index) {
 
     return playlistCard;
 }
+
 //Create all playlist cards for a playlist
 function home() {
     const targetParent = document.getElementById("playlistCardsContainer");
