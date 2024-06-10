@@ -10,66 +10,64 @@ function getPlaylistById(playlistId) {
    return null; // Return null if no matching playlist is found
  }
 
- /******** Create Playlist Card  *******/
  function createPlaylistCard(playlist) {
    // Create a container to hold the dynamically generated divs (card)
    const playlistCard = document.createElement("div");
-   // Set the class for the new div
    playlistCard.className = "card";
-   //Set the ID for the new div
    playlistCard.id = data.playlists[playlist].playlistID;
 
    //Create a container to hold cover image
    const playlistCoverImg = document.createElement("img");
-   // Set the class for the new div
    playlistCoverImg.className = "playlistCover";
-   //Set the ID for the new div
    playlistCoverImg.id = "cover" + data.playlists[playlist].playlistID;
    playlistCoverImg.src = data.playlists[playlist].playlist_art;
    playlistCard.appendChild(playlistCoverImg);
 
    //Create a container to hold playlist name
    const playlistName = document.createElement("div");
-   // Set the class for the new div
    playlistName.className = "playlistName";
-   //Set the ID for the new div
    playlistName.id = "name" + data.playlists[playlist].playlistID;
    playlistName.innerText = data.playlists[playlist].playlist_name;
    playlistCard.appendChild(playlistName);
 
    //Create a container to hold playlist creator
    const playlistCreator = document.createElement("div");
-   // Set the class for the new div
    playlistCreator.className = "playlistName";
-   //Set the ID for the new div
    playlistCreator.id = "creator" + data.playlists[playlist].playlistID;
    playlistCreator.innerText = data.playlists[playlist].playlist_creator;
    playlistCard.appendChild(playlistCreator);
 
    //Create a container to hold like-count
    const likeCountImage = document.createElement("img");
-   // Set the class for the new div
    likeCountImage.className = "likeCountImage";
-   //Set the ID for the new div
    likeCountImage.id = "countImage" + data.playlists[playlist].playlistID;
    likeCountImage.src = "assets/img/favicon.ico";
-   likeCountImage.className = "heartImage";
    playlistCard.appendChild(likeCountImage);
 
    const likeCount = document.createElement("div");
-   // Set the class for the new div
    likeCount.className = "likeCount";
-   //Set the ID for the new div
    likeCount.id = "likeCount" + data.playlists[playlist].playlistID;
+   // Initialize likeCount to 0 if it's not already set
+   if (typeof data.playlists[playlist].likeCount === 'undefined') {
+       data.playlists[playlist].likeCount = 0;
+   }
    likeCount.innerText = data.playlists[playlist].likeCount;
-   console.log('Created playlist card for playlist ID:', data.playlists[playlist].playlistID);
+   playlistCard.appendChild(likeCount);
 
-   playlistCard.appendChild(likeCount)
+   // Event listener for the like count image
+   likeCountImage.addEventListener("click", (event) => {
+      event.stopPropagation(); // Prevent the event from bubbling up to the card
+      data.playlists[playlist].likeCount = data.playlists[playlist].likeCount === 0 ? 1 : 0; // Toggle the like count
+      likeCount.innerText = data.playlists[playlist].likeCount; // Update the displayed like count
+   });
+
+   // Event listener for the card (excluding the like count image)
    playlistCard.addEventListener("click", () => {
       modal(playlist);
    });
+
    return playlistCard;
- }
+}
 
 /******************  HOME *******************/
 function home() {
@@ -194,28 +192,14 @@ function modal(playlist) {
 }
 
 /******************* MAIN ********************/
-// Select the parent div with class 'playlistCards'
-const parentDiv = document.querySelector('.playlistCards');
-// Add a click event listener to the parent div
-parentDiv.addEventListener('click', (event) => {
-   // Check if the target element has the class 'card'
-   if (event.target.classList.contains('card')) {
-      // Get the playlist ID from the target element's ID
-      const playlistId = event.target.id;
-      // Get the corresponding playlist object
-      var playlist = getPlaylistById(playlistId);
-      // Call the modal() function with the playlist parameter
-      modal(playlist);
-   }
-});
 
 // Close the modal when the user clicks on the close button
 const closeButton = document.getElementById('closeButton');
-closeButton.addEventListener('click', () => {
+closeButton.onclick = function(event) {
    // Remove the "open" class and set the display style to "none"
    document.getElementById('playlistModal').classList.remove('open');
    document.getElementById('playlistModal').style.display = 'none';
-});
+};
 
 function main() {
    //Call home() function
