@@ -145,29 +145,34 @@ function createSongCard(playlistIndex, songIndex) {
    songCoverImg.src = song.cover_art;
    songDiv.appendChild(songCoverImg);
 
+   const songInfo = document.createElement("div");
+
    const songTitle = document.createElement("div");
    songTitle.className = "songTitle";
    songTitle.id = "songTitle" + song.songID;
    songTitle.innerText = song.title;
-   songDiv.appendChild(songTitle);
+   songInfo.appendChild(songTitle);
 
    const songArtist = document.createElement("div");
    songArtist.className = "songArtist";
    songArtist.id = "songArtist" + song.songID;
    songArtist.innerText = song.artist;
-   songDiv.appendChild(songArtist);
+   songInfo.appendChild(songArtist);
 
    const songAlbum = document.createElement("div");
    songAlbum.className = "songAlbum";
    songAlbum.id = "songAlbum" + song.songID;
    songAlbum.innerText = song.album;
-   songDiv.appendChild(songAlbum);
+   songInfo.appendChild(songAlbum);
+   songDiv.appendChild(songInfo);
 
    const songDuration = document.createElement("div");
    songDuration.className = "songDuration";
    songDuration.id = "songDuration" + song.songID;
    songDuration.innerText = song.duration;
    songDiv.appendChild(songDuration);
+
+
 
    return songDiv;
 }
