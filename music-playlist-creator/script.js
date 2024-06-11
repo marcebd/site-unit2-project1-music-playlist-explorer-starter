@@ -11,6 +11,34 @@ function getPlaylistById(playlistId) {
     return null; // Return null if no matching playlist is found
 }
 
+/************** Search Bar  ************/
+function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', handleSearch);
+}
+
+function handleSearch(event) {
+    const searchTerm = event.target.value.toLowerCase();
+    const filteredPlaylists = data.playlists.filter(playlist => {
+        const matchesPlaylist = playlist.playlist_name.toLowerCase().includes(searchTerm);
+        const matchesCreator = playlist.playlist_creator.toLowerCase().includes(searchTerm);
+        return matchesPlaylist || matchesCreator;
+    });
+
+    displayFilteredPlaylists(filteredPlaylists);
+}
+
+function displayFilteredPlaylists(playlists) {
+    const playlistContainer = document.getElementById('playlistCardsContainer');
+    playlistContainer.innerHTML = ''; // Clear existing playlists
+
+    playlists.forEach(playlist => {
+        // Find the index of the playlist in the original data array
+        const index = data.playlists.findIndex(p => p.playlistID === playlist.playlistID);
+        let playlistCard = createPlaylistCard(index);
+        playlistContainer.appendChild(playlistCard);
+    });
+}
 /*************** Home Page *******************/
 // Create each playlist card
 function createPlaylistCard(index) {
@@ -199,6 +227,7 @@ function modal(playlistIndex) {
 //populatie and make the close button in modal
 function main() {
    home();
+   setupSearch();
    const closeButton = document.getElementById('closeButton');
    closeButton.onclick = function(event) {
    document.getElementById('playlistModal').classList.remove('open');

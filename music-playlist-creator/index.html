@@ -6,15 +6,20 @@
     <title>Featured Playlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <button onclick="window.location.href='featured.html'" class="navigate-button" id="navigateButton">Home</button>
+<body class="featured">
+    <header class="header">
+        <button onclick="window.location.href='featured.html'" class="navigate-button" id="navigateButton">Home</button>
+        <h2 class="title">Music Playlist Explorer</h2>
+    </header>
     <div class="container">
         <div class="left-panel">
+        <div class="playlistInfoFeatured">
             <div class="playlist-info">
-                <img id="playlistImageFeatured" src="" alt="Playlist Cover">
                 <h2 id="playlistNameFeatured"></h2>
                 <p id="playlistCreatorFeatured"></p>
             </div>
+            <img id="playlistImageFeatured" src="" alt="Playlist Cover">
+        </div>
             <div class="song-list" id="songListFeatured">
                 <!-- Songs will be dynamically inserted here -->
             </div>
@@ -23,6 +28,9 @@
             <!-- Other playlists will be dynamically inserted here -->
         </div>
     </div>
+    <footer>
+        <div id="footnote">&#x200B; Created by Marcela Billingslea 2024</div>
+    </footer>
     <script src="data/data.js"></script>
     <script src="featured.js"></script>
 </body>

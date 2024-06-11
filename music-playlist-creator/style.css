@@ -1,154 +1,157 @@
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
-
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, sans-serif; /* Default font for the body */
+    font-family: Arial, sans-serif;
 }
 
+
 .header {
-    position: fixed; /* Fix the header at the top */
+    position: fixed;
     top: 0;
-    width: 100%; /* Full width */
-    display: flex; /* Use flexbox to layout children */
-    align-items: center; /* Align items vertically in the center */
-    justify-content: center; /* Center items horizontally */
-    background-color: #FAD2B2; /* Light pastel orange */
-    padding: 60px; /* Increased from 20px */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAD2B2;
+    padding: 40px;
     box-shadow: 20px 20px 60px rgba(255, 182, 193, 0.6);
     transition: box-shadow 0.3s ease-in-out;
-    color: white;
-    font-family: 'Bubblegum Sans', cursive;
-    z-index: 1000; /* Ensure it stays on top */
+    color: rgb(0, 0, 0);
+    z-index: 1000;
 }
 
 .header:hover {
-    box-shadow:  150px 150px 300px rgba(255, 182, 193, 0.6); /* Increased shadow size */
+    box-shadow:  150px 150px 300px rgba(255, 182, 193, 0.6);
 }
 
+.search-bar {
+   padding: 10px;
+   margin-right: 70px;
+   width: 500px;
+   height: 50px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
 .navigate-button {
     background-color: rgb(224, 177, 184);
     border: none;
-    color: white;
-    font-size: 48px; /* Increased from 16px */
+    color:#000;
+    font-size: 48px;
     cursor: pointer;
-    font-family: 'Bubblegum Sans', cursive;
     transition: box-shadow 0.3s ease-in-out;
-    padding: 15px 30px; /* Added padding and increased size */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased default shadow */
+    padding: 15px 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .navigate-button:hover {
-    box-shadow: 0 24px 30px rgba(0, 0, 0, 0.3); /* Increased shadow size on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
+    box-shadow: 0 24px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
 .title {
     background-color: rgb(224, 177, 184);
-    margin: 20px 0; /* Added vertical margin */
-    font-size: 72px; /* Increased from 24px */
-    text-align: center; /* Center the text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Added shadow to the title */
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 40px;
+    padding: 30px;
+    font-size: 72px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    margin-left: 400px;
+    margin-right: 200px;
 }
 
-.playlistCards  {
-      padding-top: 300px; /* Increased space for the fixed header */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center cards horizontally */
-      overflow-y: auto; /* Enable vertical scrolling */
-      height: 100%; /* Full height to enable scrolling */
-      padding-bottom: 20px; /* Padding at the bottom */
-      width: 100%; /* Ensure the container takes full width */
-  }
-  .card {
-      background-color: #FFC0CB; /* Light pink background */
-      border-radius: 10px; /* Rounded edges */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-      margin: 10px; /* Space between cards */
-      padding: 15px; /* Padding inside the card */
-      width: 50%; /* Card width is now 50% of the container width */
-      max-width: 600px; /* Maximum width to avoid overly wide cards on larger screens */
-  }
+.playlistCards {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   overflow-x: auto;
+   overflow-y: hidden;
+   white-space: nowrap;
+   padding: 20px 0;
+   width: 100%;
+   box-sizing: border-box;
+}
 
 @media (max-width: 768px) {
    .card {
-       width: 80%; /* Slightly wider cards on smaller screens */
+       width: 80%;
    }
 }
 
 .playlistCover {
-    width: 100%; /* Full width of the card */
-    border-radius: 8px; /* Rounded edges for the image */
-    border: 3px solid #FFFFFF; /* White border for a cool frame */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+    width: 100%;
+    border-radius: 8px;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .playlistName {
-   font-size: 24px; /* Increased font size for playlist title */
-   font-weight: bold; /* Make title bold */
-   margin-top: 10px; /* Space above the text */
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: 10px;
 }
 
 .playlistCreator {
-   font-size: 18px; /* Increased font size for creator */
-   color: #666666; /* Grey color for less emphasis */
-   margin-bottom: 20px; /* Space below the text */
+   font-size: 18px;
+   color: #666666;
+   margin-bottom: 20px;
 }
 
 .likeCountImage {
-   font-family: 'Font Awesome 5 Free'; /* Font Awesome for icons */
-   font-weight: 400; /* Weight for outline icons */
-   color: #000000; /* Black color for the outline heart icon */
-   cursor: pointer; /* Pointer cursor on hover */
-   font-size: 24px; /* Increased icon size */
+   font-family: 'Font Awesome 5 Free';
+   font-weight: 400;
+   color: #000000;
+   cursor: pointer;
+   font-size: 24px;
 }
 .likeCountImage.liked {
-   color: rgb(249, 0, 0); /* Change color to red when liked */
-   font-weight: 900; /* Bold weight for filled icons */
+   color: rgb(249, 0, 0);
+   font-weight: 900;
 }
 
 .likeCount {
-   font-size: 18px; /* Increased font size for like count */
+   font-size: 18px;
    display: flex;
-   justify-content: flex-end; /* Align like button and count to the right */
-   align-items: center; /* Center items vertically */
-   margin-top: auto; /* Pushes container to the bottom of the card */
+   justify-content: flex-end;
+   align-items: center;
+   margin-top: auto;
 }
 
 .card {
-   background-color: #FFC0CB; /* Light pink background */
-   border-radius: 10px; /* Rounded edges */
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-   margin: 20px; /* Space between cards */
-   padding: 15px; /* Padding inside the card */
-   transition: transform 0.3s ease-in-out; /* Smooth transform on hover */
+   flex: 0 0 25%;
+   background-color: #FFC0CB;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   margin: 20px;
+   margin-top: 400px;
+   padding: 15px;
+   height: auto;
+   transition: transform 0.3s ease-in-out;
+   display: inline-block;
+   vertical-align: top;
 }
 
 .card:hover {
-   transform: scale(1.05); /* Slightly enlarge card on hover */
+   transform: scale(1.05);
    cursor: pointer;
 }
 
 .playlistCover {
-   width: 100%; /* Full width of the card */
-   border-radius: 8px; /* Rounded edges for the image */
-   border: 3px solid #FFFFFF; /* White border for a cool frame */
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+   width: 100%;
+   border-radius: 8px;
+   border: 3px solid #FFFFFF;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .playlistName {
-   font-size: 18px; /* Larger font size for playlist title */
-   font-weight: bold; /* Make title bold */
-   margin-top: 10px; /* Space above the title */
+   font-size: 18px;
+   font-weight: bold;
+   margin-top: 10px;
 }
 
 .playlistCreator {
-   font-size: 14px; /* Smaller font size for creator */
-   color: #666666; /* Grey color for less emphasis */
+   font-size: 14px;
+   color: #666666;
 }
 
 .song-list {
@@ -156,79 +159,78 @@ body, html {
    margin-left: 20px;
 }
 
-.song-list div {
-   margin-bottom: 10px;
-   padding: 10px;
-   background-color: #f1f1f1;
-   border-radius: 5px;
-}
-
 footer {
-    display: inline-block;
-    width: 100%;
-    height: 20%;
-    background-color: #FAD2B2;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   height: 5%;
+   background-color: #FAD2B2;
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: 10px;
   }
 
 /* CSS for Modal */
 .modal-overlay {
-   display: none; /* Hidden by default */
-   position: fixed; /* Stay in place */
-   z-index: 1001; /* Sit on top */
+   display: none;
+   position: fixed;
+   z-index: 1001;
    left: 0;
    top: 0;
-   width: 100%; /* Full width */
-   height: 100%; /* Full height */
-   overflow: hidden; /* Prevent scrolling on the overlay */
-   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-   opacity: 0; /* Start hidden */
-   visibility: hidden; /* Start hidden */
-   transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background-color: rgba(0, 0, 0, 0.5);
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .close {
    margin-left:  50px;
    margin-right: 100%;
-   font-size:50px; /* Increase the font size to make the close button larger */
-   cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-   padding: 10px; /* Add padding to increase the clickable area */
-   color: #000; /* Optional: change the color if needed */
-   display: inline-block; /* Ensures padding and dimensions are respected */
-   transition: color 0.3s ease; /* Smooth transition for color change */
+   font-size:50px;
+   cursor: pointer;
+   padding: 10px;
+   color: #000;
+   display: inline-block;
+   transition: color 0.3s ease;
 }
 .close:hover {
    cursor: pointer;
-   color: #ff0000; /* Change color on hover for visual feedback */
+   color: #ff0000;
 }
 
 .modal-overlay.open {
-   opacity: 1; /* Fully visible */
-   visibility: visible; /* Make visible */
+   opacity: 1;
+   visibility: visible;
 }
 
 .modal-content {
-   background-color: #FFC0CB; /* Light pink background */
+   background-color: #FFC0CB;
    display: flex;
    flex-direction: column;
-   align-items: center; /* Center content */
-   margin: 5% auto; /* Centered in the middle of the screen */
+   align-items: center;
+   margin: 5% auto;
    padding: 20px;
-   width: 70%; /* Adjust width as needed */
+   width: 70%;
    border-radius: 10px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   max-height: 80vh; /* Limit the height of the modal content */
+   max-height: 80vh;
 }
+
 .modalHeader {
-   background-color: #FAD2B2; /* Light pastel orange background */
+   background-color: #FAD2B2;
    padding: 20px;
-   width: 80%; /* Full width */
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+   width: 80%;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
    display: flex;
    flex-direction: row;
-   justify-content: space-between; /* Ensures elements are spaced out */
-   align-items: center; /* Align items vertically */
+   justify-content: space-between;
+   align-items: center;
    position: sticky;
-   top: 0; /* Stick to the top of the modal content */
-   z-index: 10; /* Ensure it's above the scrolled content */
+   top: 0;
+   z-index: 10;
    margin: 15px;
 
 }
@@ -237,44 +239,45 @@ footer {
    background-color: rgb(224, 177, 184);
    border: none;
    color: rgb(0, 0, 0);
-   font-size: 30px; /* Increased from 16px */
+   font-size: 30px;
    cursor: pointer;
    transition: box-shadow 0.3s ease-in-out;
-   padding: 15px 30px; /* Added padding and increased size */
-   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased default shadow */
-   margin-left: auto; /* Pushes the button to the far right */
+   padding: 15px 30px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+   margin-left: auto;
    margin-right: 50px;
    height: 100px;
    width: auto;
 }
 
 .shuffleButton:hover {
-   box-shadow: 0 24px 30px rgba(0, 0, 0, 0.3); /* Increased shadow size on hover */
-   transform: scale(1.05); /* Slightly enlarge button on hover */
+   box-shadow: 0 24px 30px rgba(0, 0, 0, 0.3);
+   transform: scale(1.05);
 }
 
 .playlistSongsContainer {
    display: flex;
    flex-direction: column;
    padding: 20px;
-   width: 80%; /* Full width */
-   overflow-y: auto; /* Enable scrolling within this container */
-   max-height: 60vh; /* Adjust height as needed */
+   width: 80%;
+   overflow-y: auto;
+   max-height: 60vh;
 }
 
 .playlistInfo {
    margin-left: 40px;
 }
+
 .song {
-   background-color: #FAD2B2; /* Light pastel orange */
+   background-color: #FAD2B2;
    margin: 10px 0;
    padding: 10px;
    border-radius: 5px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for each card */
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    display: flex;
    align-items: center;
-   justify-content: space-between; /* Ensures elements are spaced out */
-   transition: transform 0.3s ease; /* Smooth transform on hover */
+   justify-content: space-between;
+   transition: transform 0.3s ease;
 }
 
 .songCover {
@@ -287,45 +290,46 @@ footer {
 .songInfo {
    display: flex;
    flex-direction: column;
-   align-items: flex-start; /* Align text to the start */
+   align-items: flex-start;
 }
 
 .songTitle {
-   font-size: 20px; /* Larger font size for song title */
-   font-weight: bold; /* Make title bold */
-   margin-bottom: 5px; /* Space between title and artist */
+   font-size: 20px;
+   font-weight: bold;
+   margin-bottom: 5px;
 }
 
 .songArtist {
-   font-size: 16px; /* Font size for artist */
-   color: #353434; /* Grey color for less emphasis */
-   margin-bottom: 5px; /* Space between artist and album */
+   font-size: 16px;
+   color: #353434;
+   margin-bottom: 5px;
 }
 
 .songAlbum {
-   font-size: 16px; /* Font size for album */
-   color: #353434; /* Grey color for less emphasis */
+   font-size: 16px;
+   color: #353434;
 }
 
 .songDuration {
    font-size: 16px;
-   color: #353434; /* Grey color for less emphasis */
-   margin-left: auto; /* Pushes the duration to the far right */
+   color: #353434;
+   margin-left: auto;
    margin-right: 15px;
 }
+
 .playlistNameModal {
-   font-size: 44px; /* Larger font size for playlist title */
-   font-weight: bold; /* Make title bold */
-   margin-top: 10px; /* Space above the title */
+   font-size: 44px;
+   font-weight: bold;
+   margin-top: 10px;
 }
 
 .playlistCreatorModal {
-   font-size: 34px; /* Smaller font size for creator */
-   color: #666666; /* Grey color for less emphasis */
+   font-size: 34px;
+   color: #666666;
 }
 
 .song:hover {
-   transform: scale(1.05); /* Slightly enlarge card on hover */
+   transform: scale(1.05);
 }
 
 .songCover {
@@ -343,4 +347,137 @@ footer {
 .duration {
    margin-left: auto;
    font-size: 14px;
+}
+
+
+/***** Feautured Page ****/
+.container {
+   margin-top: 15%;
+   display: flex;
+   justify-content: space-between;
+   padding: 20px;
+
+}
+
+.left-panel {
+   width: 60%;
+   display: flex;
+   flex-direction: row;
+   align-content: space-between;
+   align-items: center;
+   background-color: #FAD2B2;
+}
+
+.right-panel {
+   width: 40%;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   align-content: space-around;
+   justify-content: space-between;
+
+}
+
+.playlistInfoFeatured {
+   display: flex;
+   flex-direction: row;
+   padding: 15px;
+   margin-bottom: 20px;
+   border-radius: 8px;
+   width: 50%;
+   margin-left: 20px;
+}
+
+.song-list {
+   background-color: #FFC0CB;
+   padding: 15px;
+   margin-right: 20px;
+   margin-bottom: 20px;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   width: 50%;
+   height: 100%;
+   overflow-y: auto;
+   max-height: 400px;
+}
+
+#playlistImageFeatured {
+   width: 75%;
+   height: auto;
+   border-radius: 5px;
+   margin: 20px auto;
+   display: block;
+
+}
+
+.playlist-info {
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center
+}
+
+.song-item {
+   background-color: #FAD2B2;
+   margin: 20px;
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   transition: transform 0.3s ease; 
+}
+
+.playlist-item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 10px 0;
+   padding: 10px;
+   border-radius: 5px;
+   background-color: #FFC0CB;;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   height: 33%;
+}
+
+.song-item:hover, .playlist-item:hover {
+   transform: scale(1.03);
+   cursor: pointer;
+}
+
+.song-cover, .playlist-cover {
+   width: 150px;
+   height: auto;
+   border-radius: 5px;
+   margin-left: 20px;
+}
+
+.playlist-cover{
+   margin-left: 100px;
+}
+
+.song-title, .playlist-name {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+.playlist-name{
+   margin-right: 100px;
+   font-size: 30px;
+}
+
+.song-artist {
+   font-size: 14px;
+   color: #666666;
+}
+
+.song-duration {
+   margin-left: auto;
+   font-size: 14px;
+   color: #666666;
+}
+
+.song-details {
+   margin-right: 10px;
 }
