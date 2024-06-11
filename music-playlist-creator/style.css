@@ -186,6 +186,8 @@ footer {
    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
 }
 .close {
+   margin-left:  50px;
+   margin-right: 100%;
    font-size:50px; /* Increase the font size to make the close button larger */
    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
    padding: 10px; /* Add padding to increase the clickable area */
