@@ -6,7 +6,7 @@ Submitted by: **Marcela Billingslea**
 
 Estimated time spent: 14 hours spent in total
 
-Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional):
 
 ### Application Features
 
