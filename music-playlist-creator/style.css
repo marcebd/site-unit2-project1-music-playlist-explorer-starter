@@ -426,7 +426,7 @@ footer {
    display: flex;
    align-items: center;
    justify-content: flex-start;
-   transition: transform 0.3s ease; 
+   transition: transform 0.3s ease;
 }
 
 .playlist-item {
@@ -479,5 +479,5 @@ footer {
 }
 
 .song-details {
-   margin-right: 10px;
+   margin-left: 10px;
 }

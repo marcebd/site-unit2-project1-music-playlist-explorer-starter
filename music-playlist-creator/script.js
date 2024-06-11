@@ -248,7 +248,6 @@ function createSongCard(playlistIndex, songIndex) {
     songAlbum.id = "songAlbum" + song.songID;
     songAlbum.innerText = song.album;
     songInfo.appendChild(songAlbum);
-    songDiv.appendChild(songAlbum);
     songDiv.appendChild(songInfo);
 
     // Create and append an element for the song duration.
