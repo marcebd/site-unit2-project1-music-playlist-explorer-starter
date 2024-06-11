@@ -179,11 +179,22 @@ footer {
    top: 0;
    width: 100%; /* Full width */
    height: 100%; /* Full height */
-   overflow: auto; /* Enable scroll if needed */
+   overflow: hidden; /* Prevent scrolling on the overlay */
    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
    opacity: 0; /* Start hidden */
    visibility: hidden; /* Start hidden */
    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+}
+.close {
+   font-size: 32px; /* Increase the font size to make the close button larger */
+   cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+   padding: 10px; /* Add padding to increase the clickable area */
+   color: #000; /* Optional: change the color if needed */
+   display: inline-block; /* Ensures padding and dimensions are respected */
+   transition: color 0.3s ease; /* Smooth transition for color change */
+}
+.close:hover {
+   color: #ff0000; /* Change color on hover for visual feedback */
 }
 
 .modal-overlay.open {
@@ -196,18 +207,17 @@ footer {
    display: flex;
    flex-direction: column;
    align-items: center; /* Center content */
-   margin: 15% auto; /* Centered in the middle of the screen */
+   margin: 5% auto; /* Centered in the middle of the screen */
    padding: 20px;
-   width: 80%; /* Adjust width as needed */
+   width: 70%; /* Adjust width as needed */
    border-radius: 10px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
    max-height: 80vh; /* Limit the height of the modal content */
-   overflow: hidden; /* Prevents scrolling within the modal content itself */
 }
 .modalHeader {
    background-color: #FAD2B2; /* Light pastel orange background */
    padding: 20px;
-   width: 100%; /* Full width */
+   width: 80%; /* Full width */
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
    display: flex;
    flex-direction: row;
@@ -216,21 +226,8 @@ footer {
    position: sticky;
    top: 0; /* Stick to the top of the modal content */
    z-index: 10; /* Ensure it's above the scrolled content */
-}
-
-.modalHeader {
-   position: sticky;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between; /* Ensures elements are spaced out */
-   align-items: center; /* Align items vertically */
-   top: 0; /* Stick to the top of the modal content */
-   background-color: #FAD2B2; /* Light pastel orange background */
-   z-index: 10; /* Ensure it's above the scrolled content */
-   padding: 20px;
-   width: 80%; /* Adjust width to 100% of its container */
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
    margin: 15px;
+
 }
 
 .shuffleButton {
@@ -255,7 +252,7 @@ footer {
    display: flex;
    flex-direction: column;
    padding: 20px;
-   width: 100%; /* Full width */
+   width: 80%; /* Full width */
    overflow-y: auto; /* Enable scrolling within this container */
    max-height: 60vh; /* Adjust height as needed */
 }
