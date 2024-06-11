@@ -45,7 +45,7 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
   - [ ] When clicked, the playlist is removed from the display and data model.
 
 - [x] **Search Functionality**
-  - [ ] Implement a search bar that allows users to filter playlists by name or creator.
+  - [x] Implement a search bar that allows users to filter playlists by name or creator.
 
 - [ ] **Sorting Options**
   - [ ] Implement a dropdown or button options that allow users to sort the playlist by name, number of likes, or date added.
@@ -60,8 +60,6 @@ Deployed Application (optional): [Music Playlist Explorer Deployed Site](ADD_LIN
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/57bb4157134f4a17bfd2db43e63e0c95-with-play.gif">
     </a>
   </div>
-
-<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/57bb4157134f4a17bfd2db43e63e0c95?sid=03099b2d-2c43-4c93-a0e5-fa646d7394c1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Reflection
 
